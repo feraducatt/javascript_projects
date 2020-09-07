@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlotWiki</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <link rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="sketch.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h2>Plotting the Most Common Words on Wikipedia Pages</h2>
+    <p>
+        Article Search: <input id="userinput" value="hog"></input>
+        <button id="btn" onclick="startSearch()">Submit</button>
+    </p>
+    <div class="chart-container" style="position: default; width:60em">
+    <canvas id="myChart"></canvas>
+    </div>
+    <a id="url" href = ""></a>
+</body>
+</html>

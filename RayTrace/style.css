@@ -1,0 +1,23 @@
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+  canvas {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  .heading {
+    font-size: 20pt;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: purple;
+    line-height: 20pt;
+  }
+  .description {
+    font-size: 10pt;
+    font-family: sans-serif;
+    background: -webkit-linear-gradient(green, blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
