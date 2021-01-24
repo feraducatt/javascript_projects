@@ -1,8 +1,9 @@
 class Ray {
-    constructor(pos, angle, reflected) {
+    constructor(pos, angle) {
         this.position = pos;
         this.direction = createVector(Math.cos(angle), Math.sin(angle));
-        this.reflected = reflected;
+        this.direction.normalize();
+
     }
 
     lookAt(x, y) {
@@ -11,11 +12,13 @@ class Ray {
         this.direction.normalize();
     }
 
+    //show all rays (if no boundary, not in use)
     show() {
+        strokeWeight(1);
         stroke(255);
         push();
         translate(this.position.x, this.position.y);
-        line(0, 0, this.direction.x * 10, this.direction.y * 10);
+        line(0, 0, this.direction.x * 700, this.direction.y * 700);
         pop();
     }
 
@@ -30,16 +33,19 @@ class Ray {
         const x4 = this.position.x + this.direction.x;
         const y4 = this.position.y + this.direction.y;
 
-        const den = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+        const den = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4); //y(x12)=y(x34)
+        //if these two lines do not intersect, return
         if (den == 0) {
             return;
         }
-
+    
         const t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4))/den;
         const u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3))/den;
+        //if the boundary line segment and ray intersect, save pt as the point
         if (t > 0 && t < 1 && u > 0) {
             const pt = createVector(x1+t*(x2-x1), y1+t*(y2-y1));
           return pt;
+          // else it doesn't
         } else {
             return;
         }
