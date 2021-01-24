@@ -1,10 +1,8 @@
 class Particle {
     constructor() {
         this.pos = createVector(200, 200)
-        // h is the beam height with number of rays
         this.rays = [];
         this.reflected_rays = [];
-        //makes rays between -h/2 and h/2 
         for (let p = 0; p < 2*Math.PI; p += Math.PI/200) {
             this.rays.push(new Ray(createVector(this.pos.x, this.pos.y), p));
     }
@@ -47,10 +45,11 @@ class Particle {
                 line(ray.position.x, ray.position.y, closest.x, closest.y);
                 this.reflected_rays.push(new Ray(closest.x, closest.y, Math.atan(this.reflected(ray.direction, b).y/this.reflected(ray.direction, b).x), true));
                 push();
+
                 stroke(0,0,255);
                 translate(closest.x, closest.y);
                 line(0, 0, this.reflected(ray.direction, b).x*100, this.reflected(ray.direction, b).y*100);
-                this.look(walls, this.reflected(ray.direction,b))
+                //this.look(walls, this.reflected(ray.direction,b));
                 pop();
                 push();
                 stroke(0,255,0);
