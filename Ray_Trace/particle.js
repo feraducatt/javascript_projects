@@ -47,13 +47,12 @@ class Particle {
                 line(ray.position.x, ray.position.y, closest.x, closest.y);
                 this.reflected_rays.push(new Ray(closest.x, closest.y, Math.atan(this.reflected(ray.direction, b).y/this.reflected(ray.direction, b).x), true));
                 push();
-                //stroke(0,0,255);
+                stroke(0,0,255);
                 translate(closest.x, closest.y);
-                reflected_ray=
-                //line(0, 0, this.reflected(ray.direction, b).x*100, this.reflected(ray.direction, b).y*100);
+                line(0, 0, this.reflected(ray.direction, b).x*100, this.reflected(ray.direction, b).y*100);
                 this.look(walls, this.reflected(ray.direction,b))
-                //pop();
-                //push();
+                pop();
+                push();
                 stroke(0,255,0);
                 translate(closest.x, closest.y);
                 line(0, 0, this.refracted(ray.direction, b).x*100, this.refracted(ray.direction, b).y*100);
