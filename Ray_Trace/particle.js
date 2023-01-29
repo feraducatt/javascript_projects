@@ -1,5 +1,6 @@
 class Particle {
-    constructor() {
+    constructor(col) {
+        this.col = col;
         this.pos = createVector(200, 200)
         this.rays = [];
         this.reflected_rays = [];
@@ -9,12 +10,13 @@ class Particle {
 }
     
 //update position of particle
-    update(x,y) {
+    update(x,y, col) {
         this.pos.x = x;
         this.pos.y = y;
         for (let i = 0; i< this.rays.length; i+=1) {
             this.rays[i].position = createVector(x, y);
         }
+        this.col = col;
     }
 //look for wall
     look(walls, rays) {
@@ -41,7 +43,7 @@ class Particle {
             //if there is a closest point
             if (closest) {
                 strokeWeight(1)
-                stroke(255, 100);
+                stroke(this.col);
                 line(ray.position.x, ray.position.y, closest.x, closest.y);
                 this.reflected_rays.push(new Ray(closest.x, closest.y, Math.atan(this.reflected(ray.direction, b).y/this.reflected(ray.direction, b).x), true));
                 push();
